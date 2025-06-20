@@ -1,34 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import Navbar from "./Components/Navbar";
+import pattern from "./assets/pattern.png";
+
+import {motion } from 'framer-motion'
+import { TypeAnimation } from 'react-type-animation';
+import "./App.css"
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="bg-[--background]">
+
+    <div className="container">
+    <div className="text-box pt-20 typewriter   text-strt left-10">
+    <TypeAnimation
+      sequence={[
+        'EduSpark',
+        1300,
+        "Let's Learn",
+        900,
+        'Grow with us!',
+        900,   
+        'Help the community',
+        900,
+        'Learn with Others!',
+        900
+      ]}
+      wrapper="span"
+      speed={50}
+      style={{ }}
+      repeat={Infinity}
+    />
+            <h4 className="font-bold !text-white">Your Path to Academic Success<br/> </h4>
+            <p className="text-gray-300 w-2/5 ml-5 mt-5 mb-11">EduSpark is your one-stop platform for all your academic assistance needs. Whether you need help with math, science, history, or any other subject, EduSpark connects you with dedicated volunteers ready to assist you. Our user-friendly interface makes it easy for anyone to find and receive help quickly. Join EduSpark today and discover how effortless getting the academic support you need can be!</p>
+            <a className='ml-5 mt-10 btn rounded-lg px-20 py-3 text-bold hover:bg-white mt-20 ' href="/login/" >Get Started</a>
+            
+        </div>
+    </div>
+    <Navbar />
+    <img src={pattern} style={{ height: "100vh" }} className="absolute top-0 right-0 z-[9] hue-rotate-[-250deg]" />
+    </div>
   )
 }
 
