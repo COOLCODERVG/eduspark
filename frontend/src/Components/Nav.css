@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
+.Logo-sd {
+    font-size: 15px;
+  }
+  .Nav-txt {
+    font-size: 2vh;
+  }
+  .btn-txt {
+    font-size: 17px;
+    border: 2px solid #A46BEC !important;
+    color:white !important;
+    background-color:#A46BEC !important;
+    box-shadow: 5px 5px 10px #A46BEC !important;
+
+    
+  }
+  .content{
+    margin-left: -40px;
+    min-width:160%;
+    color: #A46BEC !important;
+    margin-top:0px !important;
+  }
+  .green{
+    color: white !important;
+  }
+  
+  .btn-txt:hover {
+    background-color: #A46BEC !important;
+    color:black !important;
+  }
+
+  .NAV-Logo {
+    width: auto;
+    max-height: 8vh;
+  }
+  .NAV-socials {
+    min-width: 15px;
+    margin-left: 1vw;
+    margin-top: 10px;
+    height: auto;
+    filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(342deg)
+      brightness(115%) contrast(101%);
+  }
+  .nsocials {
+    min-width: 30px;
+    margin-left: 1vw;
+    margin-top: 1vh;
+    height: auto;
+  }
+  .Selector {
+    max-width: 10vw;
+  }
+  .CONTENT {
+    background-image: linear-gradient(to bottom right, #6d2793, #af91e8);
+  }
+
+  
