@@ -11,7 +11,7 @@ export default function Assignments () {
 
         const token = localStorage.getItem("token");
         const response2 = await axios.get(
-            `http://127.0.0.1:8000/04D2430AAFE10AA4/getassignments/${event_id}/`,
+            `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/getassignments/${event_id}/`,
             {
               headers: {
                 Authorization: `Token ${token}`,

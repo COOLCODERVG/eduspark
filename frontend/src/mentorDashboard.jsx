@@ -19,7 +19,7 @@ export default function MentorDashboard () {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://127.0.0.1:8000/04D2430AAFE10AA4/events/?user_id=${usrData.Id}`,
+        `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/events/?user_id=${usrData.Id}`,
         {
           headers: {
             Authorization: `Token ${token}`,

@@ -28,7 +28,7 @@ export default function Mentor() {
   const handleMentor = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/04D2430AAFE10AA4/mentor/add/", {
+      const response = await axios.post("https://varshg.pythonanywhere.com/04D2430AAFE10AA4/mentor/add/", {
         user_id: usrData["Id"],
         name: usrData["Username"],
         age: usrData["Age"],

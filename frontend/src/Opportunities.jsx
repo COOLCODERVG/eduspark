@@ -26,7 +26,7 @@ export default function Opportunities() {
     try {
       const token = localStorage.getItem("token");
       const response2 = await axios.post(
-        `http://127.0.0.1:8000/04D2430AAFE10AA4/registerevent/`,{
+        `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/registerevent/`,{
           user_id:usrData["Id"],
           event_id:events[Index].id
         },
@@ -54,7 +54,7 @@ export default function Opportunities() {
       const token = localStorage.getItem("token");
       
       const response2 = await axios.get(
-        `http://127.0.0.1:8000/04D2430AAFE10AA4/events/`,
+        `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/events/`,
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -63,7 +63,7 @@ export default function Opportunities() {
       );
       console.log("import 1")
       const response = await axios.get(
-        `http://127.0.0.1:8000/04D2430AAFE10AA4/users/`,
+        `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/users/`,
         {
           headers: {
             Authorization: `Token ${token}`,

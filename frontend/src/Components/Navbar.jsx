@@ -34,30 +34,38 @@ function Navbar() {
   }, []);
 
   async function logout() {
-    try {
-      await axios.post("http://127.0.0.1:8000/04D2430AAFE10AA4/logout/");
-      setSelect(false);
-      setuser(-999);
-      localStorage.removeItem("token");
-      localStorage.clear();
-      delete axios.defaults.headers.common["Authorization"];
-      localStorage.setItem(
-        "Data",
-        JSON.stringify({
-          User: "false",
-          Username: "false",
-          Id: -999,
-          Group: "Student",
-        })
-      );
-      console.log(user)
-      setTimeout(() => {
-        navigate("/");
-      }, 0); 
-    } catch (error) {
-      console.error("Logout failed:", error.response ? error.response.data : error.message);
-    }
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+    await axios.post(
+      "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
+      {},
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
+    );
+
+    setSelect(false);
+    setuser(-999);
+    localStorage.clear();
+    delete axios.defaults.headers.common["Authorization"];
+    localStorage.setItem(
+      "Data",
+      JSON.stringify({
+        User: "false",
+        Username: "false",
+        Id: -999,
+        Group: "Student",
+      })
+    );
+    setTimeout(() => {
+      navigate("/");
+    }, 0);
+  } catch (error) {
+    console.error("Logout failed:", error.response ? error.response.data : error.message);
   }
+}
 
   return (
     <nav className="fixed border-gray-200 z-50 top-0 bg-transparent max-w-screen z-[999] pb-2 w-screen mb-40 justify-center justify-content-center text-center bg-opacity-80 dark:bg-opacity-95">

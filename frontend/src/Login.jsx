@@ -19,7 +19,7 @@ export default function Login() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/04D2430AAFE10AA4/signup/", {
+      const response = await axios.post("https://varshg.pythonanywhere.com/04D2430AAFE10AA4/signup/", {
         email: email,
         username: username,
         password: password,
@@ -45,7 +45,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/04D2430AAFE10AA4/login/", {
+      const response = await axios.post("https://varshg.pythonanywhere.com/04D2430AAFE10AA4/login/", {
         username: loginEmail,
         password: loginPassword,
       });

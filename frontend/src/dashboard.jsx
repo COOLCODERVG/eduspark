@@ -26,7 +26,7 @@ const Hours = () => {
   const getNearby = async ( dist) => {
     try {
       
-      const response = await fetch(`http://127.0.0.1:8000/04D2430AAFE10AA4/nearby/${userLocation.latitude}/${userLocation.longitude}/${dist}/`, {
+      const response = await fetch(`https://varshg.pythonanywhere.com/04D2430AAFE10AA4/nearby/${userLocation.latitude}/${userLocation.longitude}/${dist}/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ const Hours = () => {
         const token = localStorage.getItem("token");
 
         const participantsResponse = await axios.get(
-            `http://127.0.0.1:8000/04D2430AAFE10AA4/participants/${usrData["Id"]}/`, {
+            `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/participants/${usrData["Id"]}/`, {
                 headers: {
                     Authorization: `Token ${token}`,
                 },

@@ -9,8 +9,7 @@ import Event from "./events";
 import Hours from "./dashboard";
 import Opportunities from "./Opportunities";
 import Assignments from "./Assignment.jsx";
-
-
+import Tasks from "./Tasks";
 
 
 const Routing = () => {
@@ -33,7 +32,7 @@ const Routing = () => {
         <Route path="/orgevent" element={<Event />} />
         <Route path="/dashboard" element={<Hours />} />
         <Route path="/opportunities" element={<Opportunities />} />
-
+        <Route path="/tasks" element={<Tasks />} />
 
       </Routes>
     </Router>

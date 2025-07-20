@@ -23,7 +23,7 @@ export default function Event() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://127.0.0.1:8000/04D2430AAFE10AA4/Org/?user_id=${usrData.Id}`,
+        `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/Org/?user_id=${usrData.Id}`,
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -31,7 +31,7 @@ export default function Event() {
         }
       );
       const response2 = await axios.get(
-        `http://127.0.0.1:8000/04D2430AAFE10AA4/events/?user_id=${usrData.Id}`,
+        `https://varshg.pythonanywhere.com/04D2430AAFE10AA4/events/?user_id=${usrData.Id}`,
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -65,7 +65,7 @@ export default function Event() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/04D2430AAFE10AA4/orgevent/",
+        "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/orgevent/",
         {
           user_id: usrData.Id,
           Organization_Name: selectedOrg,

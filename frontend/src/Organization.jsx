@@ -40,7 +40,7 @@ export default function Organization() {
   const handleOrg = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/04D2430AAFE10AA4/org/", {
+      const response = await axios.post("https://varshg.pythonanywhere.com/04D2430AAFE10AA4/org/", {
         user_id: usrData["Id"],
         name: name,
         email: email,
