@@ -51,7 +51,7 @@ export default function MentorDashboard () {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/04D2430AAFE10AA4/mentor/session/",
+        "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/mentor/session/",
         {
           user_id: usrData.Id, 
           Event_Name: name,
