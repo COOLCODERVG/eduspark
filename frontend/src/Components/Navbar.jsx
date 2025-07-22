@@ -53,15 +53,14 @@ function Navbar() {
     console.log(JSON.parse(localStorage.getItem("Data") || "{}"));
     console.log(token);
     await axios.post(
-  "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
-  {},
-  {
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  }
-);
-
+      "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
+      {},
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
+    );
 
     
     

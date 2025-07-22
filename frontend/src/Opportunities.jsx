@@ -73,6 +73,7 @@ export default function Opportunities() {
       setEvents(response2.data);
       setResp(response.data);
       console.log(response.data)
+      console.log(response2.data)
     } catch (error) {
       console.log(error);
     }

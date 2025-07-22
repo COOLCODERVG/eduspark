@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const GEMINI_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY || "AIzaSyCdpr_zkmJJEDtIfH9skmqT8VTuc7bSbp0";
+const GEMINI_API_KEY = "AIzaSyCdpr_zkmJJEDtIfH9skmqT8VTuc7bSbp0";
 
 const ChatbotBubble = () => {
   const [open, setOpen] = useState(false);

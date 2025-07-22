@@ -7,9 +7,9 @@ import ChatbotBubble from "./Components/ChatbotBubble";
 
 const Tasks = () => {
   return (
-    <div className="bg-[--background] relative h-screen overflow-hidden">
+    <div className="bg-[--background] relative h-screen !overflow-y-hidden ">
       <Navbar />
-      <div className="w-[90vw] pt-20 pb-20 !left-0 flex flex-wrap gap-10 justify-left items-start relative z-[10] max-h-[calc(100vh-80px)] overflow-y-auto mx-auto">
+      <div className="w-[100vw] pt-20 pb-20 !left-0 flex flex-wrap gap-10 justify-left items-start relative z-[10] max-h-[100vh] overflow-y-auto mx-auto h-screen overflow-y-hidden">
         {/* Adjust max height to viewport minus navbar height (example 80px) */}
         <TaskGenerator />
         <TodoList />
