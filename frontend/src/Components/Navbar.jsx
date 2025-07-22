@@ -36,20 +36,6 @@ function Navbar() {
   async function logout() {
   try {
     const token = JSON.parse(localStorage.getItem("token"));
-    await axios.post(
-      "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
-      {},
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    );
-
-    setSelect(false);
-    setuser(-999);
-    localStorage.clear();
-    delete axios.defaults.headers.common["Authorization"];
     localStorage.setItem(
       "Data",
       JSON.stringify({
@@ -59,9 +45,26 @@ function Navbar() {
         Group: "Student",
       })
     );
-    setTimeout(() => {
-      navigate("/");
-    }, 0);
+    setSelect(false);
+    setuser(-999);
+    localStorage.clear();
+    delete axios.defaults.headers.common["Authorization"];
+    
+    console.log(JSON.parse(localStorage.getItem("Data") || "{}"));
+    console.log(token);
+    await axios.post(
+  "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
+  {},
+  {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  }
+);
+
+
+    
+    
   } catch (error) {
     console.error("Logout failed:", error.response ? error.response.data : error.message);
   }
@@ -188,26 +191,26 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="/soon/"
+                href="/dashboard/"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                About
+                Dashboard
               </a>
             </li>
             <li>
               <a
-                href="/soon/"
+                href="/opportunities/"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                Programs
+                Opportunities
               </a>
             </li>
             <li>
               <a
-                href="/soon/"
+                href="/Tasks/"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                Membership
+                Tasks
               </a>
             </li>
           </ul>
