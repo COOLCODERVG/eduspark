@@ -31,7 +31,7 @@
 
 - **Frontend:** React, Axios, TailwindCSS, WebRTC (for video calls)  
 - **Backend:** Django, Django REST Framework, CORS, SQLite  
-- **AI Integration:** Google Gemini API via `REACT_APP_GEMINI_API_KEY`  
+- **AI Integration:** Google Gemini API via `VITE_APP_GEMINI_API_KEY`  
 - **Video Calls:** PeerJS/WebRTC (optional)  
 - **Storage:** Supabase or PostgreSQL (future upgrades)  
 
@@ -47,8 +47,8 @@ eduspark/
 ├── frontend/            # React application
 │   └── src/
 │       ├── components/  # Feature-specific React components
+        ├── .env                 # Environment variables (not committed)
 │       └── App.js
-├── .env                 # Environment variables (not committed)
 ├── README.md
 └── .gitignore
 ```
@@ -60,16 +60,24 @@ eduspark/
 ### Frontend (`/frontend/`)
 
 ```.env
-REACT_APP_GEMINI_API_KEY=your_gemini_api_key_here
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-> React requires env variables to start with `REACT_APP_` to expose them to the app.
+> For Vite-powered React apps, environment variables must start with `VITE_`, e.g., `VITE_GEMINI_API_KEY`.
+
+
+### Setting up Environment Variables
+
+Create a `.env` file inside the `/frontend` directory with your Gemini API key:
+
+```bash
+cd frontend
+echo "VITE_GEMINI_API_KEY=your_api_key_here" > .env
 
 ---
 
-
 ## 🧑‍💻 Local Setup (Under 2 Minutes)
-- Create `.env` file in the main directory `eduspark` with REACT_APP_GEMINI_API_KEY
+- Create `.env` file inside the `/frontend` directory with your Gemini API key as `VITE_GEMINI_API_KEY`.
 
 ### 1. Clone the repository
 
@@ -83,9 +91,9 @@ cd eduspark
 ### 2. Backend — Django
 
 ```bash
-cd backend
+cd eduspark     # or backend, whichever matches your repo
 python -m venv env
-source env/bin/activate      # Windows: env\Scripts\activate
+source env/bin/activate  # Windows: env\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -97,6 +105,7 @@ python manage.py runserver
 ```
 
 Backend runs at: `http://127.0.0.1:8000/`
+Make sure your Django backend’s CORS settings allow requests from `http://localhost:5173` to avoid errors during local dev.
 
 ---
 
@@ -173,7 +182,7 @@ A: Visit [https://makersuite.google.com/app/apikey](https://makersuite.google.co
 ---
 
 **Q: Why isn’t my React `.env` variable working?**  
-A: Restart the dev server after editing `.env`, and make sure variables start with `REACT_APP_`.
+A: Restart the dev server after editing `.env`, and make sure variables start with `VITE_APP_`.
 
 ---
 
