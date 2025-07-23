@@ -84,6 +84,7 @@ Create a `.env` file inside the `/frontend` directory with your Gemini API key:
 cd frontend
 echo "VITE_GEMINI_API_KEY=your_api_key_here" > .env
 
+```
 ---
 
 ### 2. Backend — Django
