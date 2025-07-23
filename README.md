@@ -31,7 +31,7 @@
 
 - **Frontend:** React, Axios, TailwindCSS, WebRTC (for video calls)  
 - **Backend:** Django, Django REST Framework, CORS, SQLite  
-- **AI Integration:** Google Gemini API via `VITE_APP_GEMINI_API_KEY`  
+- **AI Integration:** Google Gemini API via `VITE_GEMINI_API_KEY`  
 - **Video Calls:** PeerJS/WebRTC (optional)  
 - **Storage:** Supabase or PostgreSQL (future upgrades)  
 
@@ -41,16 +41,17 @@
 
 ```
 eduspark/
-├── eduspark/             # Django application
-│   ├── app/             # DRF views, serializers, URLs
-│   └── eduspark/         # Django settings and configuration
-├── frontend/            # React application
-│   └── src/
-│       ├── components/  # Feature-specific React components
-        ├── .env                 # Environment variables (not committed)
-│       └── App.js
+├── eduspark/ # Django application
+│ ├── app/ # DRF views, serializers, URLs
+│ └── eduspark/ # Django settings and configuration
+├── frontend/ # React application
+│ └── src/
+│ ├── components/ # Feature-specific React components
+│ ├── .env # Environment variables (not committed)
+│ └── App.jsx
 ├── README.md
 └── .gitignore
+
 ```
 
 ---
@@ -181,7 +182,7 @@ A: Visit [https://makersuite.google.com/app/apikey](https://makersuite.google.co
 ---
 
 **Q: Why isn’t my React `.env` variable working?**  
-A: Restart the dev server after editing `.env`, and make sure variables start with `VITE_APP_`.
+A: Restart the dev server after editing `.env`, and make sure variables start with `VITE_`.
 
 ---
 
