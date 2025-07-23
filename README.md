@@ -1,6 +1,22 @@
 
 # 📘 EduSpark – AI-Powered Student Success Platform
 
+⚠️ This is a team project and here are my contributions to Eduspark: 
+🔧 Backend Integration & Bug Fixes
+I helped connect the frontend with the backend APIs and contributed to fixing key issues in the login system, mentor dashboard, and Task Generator.
+
+🎨 Frontend Pages & Styling
+I worked on building and styling multiple frontend components, including parts of the navbar, login page, dashboard, and mentor-related views.
+
+🧪 Testing & Debugging
+I actively tested new features and helped debug frontend/backend issues during development and before deployment.
+
+📄 README Documentation
+I authored and improved the README.md file to provide clear setup instructions, explain features, and ensure smooth onboarding for new users or contributors.
+
+🚀 Production Prep
+I contributed to preparing the project for deployment by cleaning up code, helping with Vercel routing config (vercel.json), and validating that the app met the shipping criteria.
+
 **EduSpark** is a full-stack platform built to help students organize, learn, and grow smarter with the help of AI. It combines:
 
 - 🧠 **AI Study Planner** – generates date-aware study plans via Gemini API  
