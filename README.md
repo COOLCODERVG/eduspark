@@ -1,6 +1,14 @@
+
 # 📘 EduSpark – AI-Powered Student Success Platform
 
-**EduSpark** is a full-stack platform built to help students organize, learn, and grow smarter with the help of AI. It combines intelligent study plan generation, tutoring access, collaborative online study rooms, curated local opportunities, and a conversational chatbot for academic support.
+**EduSpark** is a full-stack platform built to help students organize, learn, and grow smarter with the help of AI. It combines:
+
+- 🧠 **AI Study Planner** – generates date-aware study plans via Gemini API  
+- 📚 **Tutoring Access** – discover local and online tutors  
+- 🎯 **Local Opportunities** – find competitions, summer programs, internships  
+- 🧑‍💻 **Study Sessions** – join/create group video call rooms  
+- 🤖 **Chatbot Assistant** – AI Q&A for subjects, exams, assignments  
+- 📅 **Assignment Tracker** – manage homework, tasks, deadlines  
 
 ---
 
@@ -8,163 +16,197 @@
 
 | Feature                | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
-| 🧠 AI Study Planner     | Generates subject-specific, date-aware study plans using Gemini API         |
-| 📚 Tutoring Access      | Easily discover local & online tutors (school-based, peer-to-peer, etc.)     |
-| 🎯 Local Opportunities  | Explore competitions, summer programs, volunteering, and internships        |
-| 🧑‍💻 Study Sessions      | Join or create live video call rooms for group studying                     |
-| 🤖 Chatbot Assistant    | Ask AI questions about your subject, exams, or assignments                  |
-| 📅 Assignment Tracker   | Track and categorize homework, tasks, and deadlines                         |
-| 🌐 React Frontend       | Modern and responsive UI with TailwindCSS & component modularity            |
-| 🔙 Django Backend       | RESTful API using Django + Django REST Framework (DRF)                      |
+| 🧠 AI Study Planner     | Generates subject-specific, exam-aware study plans using Gemini API         |
+| 📚 Tutoring Access      | Explore tutors school-based, peer-to-peer, and online                       |
+| 🎯 Local Opportunities  | View competitions, volunteering, and internship programs                   |
+| 🧑‍💻 Study Sessions      | Host or join live WebRTC video call study rooms                            |
+| 🤖 Chatbot Assistant    | Ask natural-language questions and get AI-generated academic support       |
+| 📅 Assignment Tracker   | Track and categorize your tasks and deadlines                              |
+| 🌐 React Frontend       | Responsive UI using React + TailwindCSS, modular component structure       |
+| 🔙 Django Backend       | Secure RESTful API implementation powered by Django + DRF                  |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, Axios, TailwindCSS, WebRTC (for video)
-- **Backend:** Django, Django REST Framework, CORS, SQLite
-- **AI Integration:** Google Gemini API via `REACT_APP_GEMINI_API_KEY`
-- **Video Calls:** PeerJS/WebRTC *(optional)*
-- **Storage:** Supabase or PostgreSQL *(optional later)*
+- **Frontend:** React, Axios, TailwindCSS, WebRTC (for video calls)  
+- **Backend:** Django, Django REST Framework, CORS, SQLite  
+- **AI Integration:** Google Gemini API via `REACT_APP_GEMINI_API_KEY`  
+- **Video Calls:** PeerJS/WebRTC (optional)  
+- **Storage:** Supabase or PostgreSQL (future upgrades)  
 
 ---
 
 ## 🧩 Project Structure
 
-EduSpark/
-├── backend/ # Django app
-│ ├── api/ # DRF views/serializers
-│ └── backend/ # Django settings
-├── frontend/ # React app
-│ └── src/
-│ ├── components/ # All feature modules
-│ └── App.js
-├── .env # Environment variables (not committed)
+```
+eduspark/
+├── backend/             # Django application
+│   ├── api/             # DRF views, serializers, URLs
+│   └── backend/         # Django settings and configuration
+├── frontend/            # React application
+│   └── src/
+│       ├── components/  # Feature-specific React components
+│       └── App.js
+├── .env                 # Environment variables (not committed)
 ├── README.md
-
-yaml
-Copy
-Edit
+└── .gitignore
+```
 
 ---
 
 ## 🔐 Environment Variables
 
-### 📄 `/frontend/.env`
+### Frontend (`/frontend/.env`)
 
 ```env
 REACT_APP_GEMINI_API_KEY=your_gemini_api_key_here
-React requires all environment variables to be prefixed with REACT_APP_.
+```
 
-📄 /backend/.env (optional)
-env
-Copy
-Edit
+> React requires env variables to start with `REACT_APP_` to expose them to the app.
+
+---
+
+### Backend (`/backend/.env`) (optional)
+
+```env
 SECRET_KEY=your_django_secret_key
 DEBUG=True
 GEMINI_API_KEY=your_gemini_api_key_here
-⚠️ Do not commit .env files. Add .env to .gitignore.
+```
 
-🧑‍💻 Local Setup (⏱️ Under 2 minutes)
-1️⃣ Clone the repo
-bash
-Copy
-Edit
-git clone https://github.com/your-username/eduspark.git
+> **Important:** Do NOT commit `.env` files. Add `.env` to `.gitignore`.
+
+---
+
+## 🧑‍💻 Local Setup (Under 2 Minutes)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/COOLCODERVG/eduspark.git
 cd eduspark
-2️⃣ Backend – Django
-bash
-Copy
-Edit
+```
+
+---
+
+### 2. Backend — Django
+
+```bash
 cd backend
 python -m venv env
-source env/bin/activate     # Windows: env\Scripts\activate
+source env/bin/activate      # Windows: env\Scripts\activate
 pip install -r requirements.txt
-✅ Create .env file
-✅ Apply migrations & start server:
+```
 
-bash
-Copy
-Edit
+- Create `.env` file as described above
+- Apply migrations and run server:
+
+```bash
 python manage.py migrate
 python manage.py runserver
-Backend runs at: http://localhost:8000/api/
+```
 
-3️⃣ Frontend – React
-Open a new terminal:
+Backend runs at: `http://localhost:8000/api/`
 
-bash
-Copy
-Edit
+---
+
+### 3. Frontend — React
+
+Open a new terminal window:
+
+```bash
 cd frontend
 npm install
-✅ Create .env file inside frontend
-✅ Start the React dev server:
+```
 
-bash
-Copy
-Edit
+- Create `.env` file inside `frontend`
+- Start React dev server:
+
+```bash
 npm start
-Frontend runs at: http://localhost:3000
+```
 
-🧪 Testing the Platform
-What to Test	How to Test
-📅 Study Plan Generator	Enter subject + exam date → click "Generate" → Gemini plan appears
-💬 AI Chatbot	Ask “Explain photosynthesis” or “Summarize chapter 3 in chemistry”
-🧑‍🏫 Tutoring	Navigate to “Tutoring” → view available tutor listings
-🎯 Opportunities	View curated school-based programs & competitions
-📞 Study Calls	Join or create a study room → launches WebRTC or PeerJS video call
-✅ Task Tracker	Add/edit/delete assignments & deadlines
+Frontend runs at: `http://localhost:3000`
 
-🌍 API Endpoints (Django DRF)
-Endpoint	Method	Description
-/api/tasks/	GET/POST	View or create tasks
-/api/tutors/	GET	List of tutor entries
-/api/opportunities/	GET	List of events/programs
-/api/study-plan/	POST	Generates Gemini-based study plan
-/api/chatbot/	POST	LLM-powered Q&A assistant
+---
 
-🧼 Deployment Tips (Optional)
-React: Use Vercel, Netlify, or GitHub Pages.
+## 🧪 Testing the Platform
 
-Django: Use Render, Railway, or Heroku.
+| What to Test           | How to Test                                                                 |
+|------------------------|------------------------------------------------------------------------------|
+| 📅 Study Planner       | Input subject & exam date → click **Generate** → see Gemini-powered plan     |
+| 💬 AI Chatbot          | Ask “Explain photosynthesis” or “Summarize chapter 3 in chemistry”           |
+| 🧑‍🏫 Tutoring           | Navigate to **Tutoring** → browse available tutor listings                   |
+| 🎯 Opportunities        | Browse curated competitions/programs under **Opportunities**                |
+| 📞 Study Calls         | Join/create a room → engage in WebRTC/PeerJS video call                      |
+| ✅ Task Tracker         | Create, update, delete assignments and deadlines                            |
 
-Add env variables in your hosting dashboard.
+---
 
-Set DEBUG=False and use ALLOWED_HOSTS in settings.py.
+## 🌍 API Endpoints (Django DRF)
 
-📦 Example .gitignore
-bash
-Copy
-Edit
+| Endpoint               | Method   | Description                             |
+|------------------------|----------|-----------------------------------------|
+| `/api/tasks/`          | GET/POST | View or create assignments/tasks      |
+| `/api/tutors/`         | GET      | List all tutors                       |
+| `/api/opportunities/`  | GET      | List all opportunities/programs       |
+| `/api/study-plan/`     | POST     | Generate AI-driven study plan         |
+| `/api/chatbot/`        | POST     | Ask AI academic questions             |
+
+---
+
+## 🧼 Deployment Tips (Optional)
+
+- **Frontend**: Deploy on [Vercel](https://vercel.com), [Netlify](https://netlify.com), or GitHub Pages  
+- **Backend**: Deploy on [Render](https://render.com), [Railway](https://railway.app), or [Heroku](https://heroku.com)  
+- Set environment variables in your hosting dashboard  
+- Set `DEBUG=False` and configure `ALLOWED_HOSTS` in Django settings  
+
+---
+
+## 📦 Example `.gitignore`
+
+```gitignore
 .env
 *.pyc
 __pycache__/
 env/
 frontend/node_modules/
 frontend/.env
-🔧 Future Improvements
-🔑 Firebase/Google login
+```
 
-👥 Group invite system for study sessions
+---
 
-📚 AI-powered quiz & flashcard generator
+## 🔧 Future Improvements
 
-🛠 Admin panel to manage tutors & events
+- Firebase/Google authentication  
+- Group invites and scheduling for study sessions  
+- AI-powered quiz and flashcard generators  
+- Admin dashboard for tutors and opportunity management  
+- AI-aided notetaking and summarization  
 
-📝 Notetaking with AI summarization
+---
 
-🙋 FAQ
-Q: How do I get a Gemini API key?
-A: Go to https://makersuite.google.com/app/apikey
+## 🙋 FAQ
 
-Q: Why isn’t my .env variable working in React?
-A: Restart npm start after editing .env and make sure it starts with REACT_APP_.
+**Q: How do I get a Gemini API key?**  
+A: Visit [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey) to create your key.
 
-Q: Can this be hosted with free tools?
+---
+
+**Q: Why isn’t my React `.env` variable working?**  
+A: Restart the dev server after editing `.env`, and make sure variables start with `REACT_APP_`.
+
+---
+
+**Q: Can I host this app for free?**  
 A: Yes! Use Vercel for frontend and Render, Railway, or Heroku for backend.
 
-🧑‍🎓 Built by Students, for Students
-Created by Varshith Gude
-Passionate about democratizing smart education through open-source AI tools.
-📧 varshithgude.cs@gmail.com
+---
+
+## 🧑‍🎓 Built by Students, for Students
+
+Created by **Varshith Gude (COOLCODERVG)**  
+Passionate about democratizing smart education through open-source AI tools.  
+📧 [varshithgude.cs@gmail.com](mailto:varshithgude.cs@gmail.com)
