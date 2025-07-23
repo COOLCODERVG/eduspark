@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 
-const GEMINI_API_KEY = "AIzaSyCdpr_zkmJJEDtIfH9skmqT8VTuc7bSbp0";
+const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
 const TaskGenerator = () => {
   const [subject, setSubject] = useState("");
