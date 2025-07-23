@@ -8,66 +8,59 @@ function Navbar() {
   const usrData = JSON.parse(localStorage.getItem("Data") || "{}");
   const [selectedItem, setSelectedItem] = useState(false);
   const [Selects, setSelect] = useState(false);
-  const [user, setuser] = useState(JSON.parse(localStorage.getItem("Data") || "{}")["Id"]);
+  const [user, setuser] = useState(usrData["Id"] ?? -999); // fallback to -999 if no Id
   const history = useNavigate();
 
-  const closePopup = () => {
-    setSelectedItem(false);
-  };
-
-  const openPopup = () => {
-    setSelectedItem(true);
-  };
+  const closePopup = () => setSelectedItem(false);
+  const openPopup = () => setSelectedItem(true);
 
   const handleOpen = () => {
     if (user === -999) {
       history("/login/");
     } else {
-      setSelect((Selects) => !Selects);
+      setSelect((prev) => !prev);
     }
   };
 
   useEffect(() => {
-    if (user === -999) {
+    if (user === undefined || user === null) {
       setuser(-999);
     }
-  }, []);
+  }, [user]);
 
   async function logout() {
-  try {
-    const token = JSON.parse(localStorage.getItem("token"));
-    localStorage.setItem(
-      "Data",
-      JSON.stringify({
-        User: "false",
-        Username: "false",
-        Id: -999,
-        Group: "Student",
-      })
-    );
-    setSelect(false);
-    setuser(-999);
-    localStorage.clear();
-    delete axios.defaults.headers.common["Authorization"];
-    
-    console.log(JSON.parse(localStorage.getItem("Data") || "{}"));
-    console.log(token);
-    await axios.post(
-      "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
-      {},
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    );
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      localStorage.setItem(
+        "Data",
+        JSON.stringify({
+          User: "false",
+          Username: "false",
+          Id: -999,
+          Group: "Student",
+        })
+      );
+      setSelect(false);
+      setuser(-999);
+      localStorage.clear();
+      delete axios.defaults.headers.common["Authorization"];
 
-    
-    
-  } catch (error) {
-    console.error("Logout failed:", error.response ? error.response.data : error.message);
+      await axios.post(
+        "https://varshg.pythonanywhere.com/04D2430AAFE10AA4/logout/",
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.error(
+        "Logout failed:",
+        error.response ? error.response.data : error.message
+      );
+    }
   }
-}
 
   return (
     <nav className="fixed border-gray-200 z-50 top-0 bg-transparent max-w-screen z-[999] pb-2 w-screen mb-40 justify-center justify-content-center text-center bg-opacity-80 dark:bg-opacity-95">
@@ -76,108 +69,115 @@ function Navbar() {
           <h2 className="my-4 ml-20 Logo-txt verticalLine pr-2 font-black logo">
             <img src={Logo} className="NAV-Logo" alt="Logo" />
           </h2>
-          <span className="text-left Logo-sd font-bold text-4xl  whitespace-nowrap text-white dark:text-white">
+          <span className="text-left Logo-sd font-bold text-4xl whitespace-nowrap text-white dark:text-white">
             EduSpark
-            </span>
-
+          </span>
         </a>
+
         <div className="items-center md:order-2 space-x-3 mr-80 rtl:space-x-reverse ">
-          <div
-            className="relative"
-            onMouseEnter={() => setSelect(true)}
-            onMouseLeave={() => setSelect(false)}
-          >
-            <button
-              type="button"
-              className="flex px-3 mr-40 py-2 btn-txt rounded-xl md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-              
-              onClick={handleOpen}
+          {user === -999 ? (
+            // Logged out: show plain Log In link
+            <a
+              href="/login/"
+              className="btn-txt px-3 py-2 rounded-xl text-white green"
             >
-              <span className="sr-only">Open user menu</span>
-              <div className="">
-                {user !== -999 ? (
-                  <p className="">{usrData["Username"]} ▼</p>
-                ) : (
-                  <a className="green text-white" href="/login/">
-                    Log In
-                  </a>
-                )}
-              </div>
-            </button>
-            {Selects && user !== -999 && (
-              <div className="absolute top-full content left-0 mt-1 bg-white divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-white  dark:divide-gray-600">
-                <div className="px-4 py-3">
-                  <span className="block text-sm  ">
-                    {usrData["User"]}
-                  </span>
-                  <span className="block text-sm  truncate dark:te  xt-gray-400">
-                    {usrData["Id"]}
-                  </span>
+              Log In
+            </a>
+          ) : (
+            // Logged in: show dropdown button
+            <div
+              className="relative"
+              onMouseEnter={() => setSelect(true)}
+              onMouseLeave={() => setSelect(false)}
+            >
+              <button
+                type="button"
+                className="flex px-3 mr-40 py-2 btn-txt rounded-xl md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                onClick={handleOpen}
+              >
+                <span className="sr-only">Open user menu</span>
+                <p>{usrData["Username"]} ▼</p>
+              </button>
+
+              {Selects && (
+                <div className="absolute top-full left-0 mt-1 bg-white divide-y divide-gray-100 rounded-lg shadow-xl dark:bg-white dark:divide-gray-600">
+                  <div className="px-4 py-3">
+                    <span className="block text-sm">{usrData["User"]}</span>
+                    <span className="block text-sm truncate dark:text-gray-400">
+                      {usrData["Id"]}
+                    </span>
+                  </div>
+
+                  {(usrData["type"] === "Mentor" ||
+                  usrData["userType"] === "Mentor") ? (
+                    <ul className="py-2" aria-labelledby="user-menu-button">
+                      <li>
+                        <a
+                          href="/mentor/dashboard"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                        >
+                          Mentor Dashboard
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/opportunities/"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                          onClick={openPopup}
+                        >
+                          Opportunity
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/"
+                          onClick={logout}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                        >
+                          Sign out
+                        </a>
+                      </li>
+                    </ul>
+                  ) : (
+                    <ul className="py-2" aria-labelledby="user-menu-button">
+                      <li>
+                        <a
+                          href="/dashboard"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/opportunities/"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                          onClick={openPopup}
+                        >
+                          Opportunity
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/"
+                          onClick={logout}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                        >
+                          Sign out
+                        </a>
+                      </li>
+                    </ul>
+                  )}
                 </div>
-                {(usrData["type"] === "Mentor" || usrData["userType"] === "Mentor") ? (<ul className="py-2" aria-labelledby="user-menu-button">
-                    <li>
-                      <a
-                        href="/mentor/dashboard"
-                        className="block px-4 py-2 text-sm  hover:bg-gray-100 text-black"
-                      >
-                        Mentor Dashboard
-                      </a>
-                    </li>
-                    <li>
-                    <a href="/opportunities/"
-                      className="block px-4 py-2 text-sm  hover:bg-gray-100 text-black"
-                      onClick={openPopup}
-                    >
-                      Opportunity
-                    </a>
-                  </li>
-
-                  
-                  
-                  <li>
-                    <a
-                      href="/"
-                      onClick={logout}
-                      className="block px-4 py-2 text-sm  hover:bg-gray-100 text-black"
-                    >
-                      Sign out
-                    </a>
-                  </li>
-                </ul>):(<ul className="py-2" aria-labelledby="user-menu-button">
-                    <li>
-                      <a
-                        href="/dashboard"
-                        className="block px-4 py-2 text-sm  hover:bg-gray-100 text-black"
-                      >
-                        Dashboard
-                      </a>
-                    </li>
-                  
-
-                  <li>
-                    <a href="/opportunities/"
-                      className="block px-4 py-2 text-sm  hover:bg-gray-100 text-black"
-                      onClick={openPopup}
-                    >
-                      Opportunity
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      onClick={logout}
-                      className="block px-4 py-2 text-sm  hover:bg-gray-100 text-black"
-                    >
-                      Sign out
-                    </a>
-                  </li>
-                </ul>)}
-                
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
-        <div className="items-center justify-between hidden  md:flex md:w-auto md:order-1 ml-2 mr-2" id="navbar-user">
+
+        <div
+          className="items-center justify-between hidden md:flex md:w-auto md:order-1 ml-2 mr-2"
+          id="navbar-user"
+        >
           <ul className="flex flex-col text-md font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-opacity-80 dark:bg-opacity-95">
             <li>
               <a
@@ -215,9 +215,14 @@ function Navbar() {
           </ul>
         </div>
       </div>
+
       {selectedItem && (
         <>
-          <div className="overlay" onClick={closePopup} style={{ zIndex: 9998 }} />
+          <div
+            className="overlay"
+            onClick={closePopup}
+            style={{ zIndex: 9998 }}
+          />
           <div className="popup" style={{ zIndex: 9999 }}>
             <div className="popup-content text-center">
               <h1 className="font-black text-lg text-center">Information</h1>
@@ -243,7 +248,7 @@ function Navbar() {
                   <p className="">
                     <strong>Role</strong>
                     <br />
-                    {usrData["Groups"][0]}
+                    {usrData["Groups"] && usrData["Groups"][0]}
                   </p>
                 </div>
               </div>
