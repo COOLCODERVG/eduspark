@@ -40,18 +40,23 @@ export default function Opportunities() {
         },
       }
     );
-    // Show REGISTERED! alert on success
-    alert("REGISTERED!");
-    fetchData();
+    console.log("Successfully registered:", response2.data);
   } catch (error) {
     if (error.response && error.response.status === 400) {
-      alert("You have already signed up for that event");
+      console.log("Already registered.");
     } else {
-      // Don't alert raw errors, just log to console
       console.log("Error registering event:", error);
     }
+  } finally {
+    // This always runs — success or error
+    alert("REGISTERED!");
+    // Or use the UI message box:
+    // setMessage("REGISTERED!");
+    // setMessageType("success");
+    fetchData(); // refresh events list
   }
 }
+
 
 
   async function fetchData() {
