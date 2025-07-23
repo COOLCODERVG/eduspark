@@ -41,9 +41,9 @@
 
 ```
 eduspark/
-├── backend/             # Django application
-│   ├── api/             # DRF views, serializers, URLs
-│   └── backend/         # Django settings and configuration
+├── eduspark/             # Django application
+│   ├── app/             # DRF views, serializers, URLs
+│   └── eduspark/         # Django settings and configuration
 ├── frontend/            # React application
 │   └── src/
 │       ├── components/  # Feature-specific React components
@@ -57,9 +57,9 @@ eduspark/
 
 ## 🔐 Environment Variables
 
-### Frontend (`/frontend/.env`)
+### Frontend (`/frontend/`)
 
-```env
+```.env
 REACT_APP_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
@@ -67,19 +67,9 @@ REACT_APP_GEMINI_API_KEY=your_gemini_api_key_here
 
 ---
 
-### Backend (`/backend/.env`) (optional)
-
-```env
-SECRET_KEY=your_django_secret_key
-DEBUG=True
-GEMINI_API_KEY=your_gemini_api_key_here
-```
-
-> **Important:** Do NOT commit `.env` files. Add `.env` to `.gitignore`.
-
----
 
 ## 🧑‍💻 Local Setup (Under 2 Minutes)
+- Create `.env` file in the main directory `eduspark` with REACT_APP_GEMINI_API_KEY
 
 ### 1. Clone the repository
 
@@ -99,7 +89,6 @@ source env/bin/activate      # Windows: env\Scripts\activate
 pip install -r requirements.txt
 ```
 
-- Create `.env` file as described above
 - Apply migrations and run server:
 
 ```bash
@@ -107,7 +96,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Backend runs at: `http://localhost:8000/api/`
+Backend runs at: `http://127.0.0.1:8000/`
 
 ---
 
@@ -120,14 +109,13 @@ cd frontend
 npm install
 ```
 
-- Create `.env` file inside `frontend`
 - Start React dev server:
 
 ```bash
-npm start
+npm run dev
 ```
 
-Frontend runs at: `http://localhost:3000`
+Frontend runs at: `http://localhost:5173`
 
 ---
 
@@ -144,22 +132,11 @@ Frontend runs at: `http://localhost:3000`
 
 ---
 
-## 🌍 API Endpoints (Django DRF)
-
-| Endpoint               | Method   | Description                             |
-|------------------------|----------|-----------------------------------------|
-| `/api/tasks/`          | GET/POST | View or create assignments/tasks      |
-| `/api/tutors/`         | GET      | List all tutors                       |
-| `/api/opportunities/`  | GET      | List all opportunities/programs       |
-| `/api/study-plan/`     | POST     | Generate AI-driven study plan         |
-| `/api/chatbot/`        | POST     | Ask AI academic questions             |
-
----
 
 ## 🧼 Deployment Tips (Optional)
 
 - **Frontend**: Deploy on [Vercel](https://vercel.com), [Netlify](https://netlify.com), or GitHub Pages  
-- **Backend**: Deploy on [Render](https://render.com), [Railway](https://railway.app), or [Heroku](https://heroku.com)  
+- **Backend**: Deploy on [PythonAnywhere](https://www.pythonanywhere.com/)
 - Set environment variables in your hosting dashboard  
 - Set `DEBUG=False` and configure `ALLOWED_HOSTS` in Django settings  
 
