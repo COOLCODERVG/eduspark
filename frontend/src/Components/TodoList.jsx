@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaEdit, FaTrash, FaPlus, FaTimes, FaMagic } from "react-icons/fa";
 
-const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 const TodoList = () => {
   const [tasks, setTasks] = useState(() => {

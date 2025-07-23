@@ -59,7 +59,7 @@ const Hours = () => {
       <div className="w-screen h-screen bg-[--background] overflow-hidden">
         <div className="flex h-full">
           {/* Left Panel */}
-          <div className="w-1/2 mt-[20vh] px-4">
+          <div className="w-1/2 mt-[20vh] px-4 ml-10">
             <h1 className="text-white text-3xl font-bold mb-6">📚 My Events</h1>
             
             {err && (
@@ -202,7 +202,7 @@ const Hours = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center h-[70vh] text-center">
+              <div className="flex flex-col items-center justify-center h-[70vh] text-center !mr-[10vw]">
                 <div className="animate-bounce mb-8">
                   <div className="text-8xl mb-4">📚</div>
                   <h2 className="text-4xl font-bold text-white mb-4">My Dashboard</h2>

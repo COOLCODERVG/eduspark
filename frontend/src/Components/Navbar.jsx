@@ -123,9 +123,17 @@ function Navbar() {
                         <a
                           href="/opportunities/"
                           className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
-                          onClick={openPopup}
                         >
                           Opportunity
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                          onClick={openPopup}
+                        >
+                          Profile
                         </a>
                       </li>
                       <li>
@@ -152,9 +160,17 @@ function Navbar() {
                         <a
                           href="/opportunities/"
                           className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
-                          onClick={openPopup}
                         >
                           Opportunity
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 text-black"
+                          onClick={openPopup}
+                        >
+                          Profile
                         </a>
                       </li>
                       <li>
@@ -248,7 +264,7 @@ function Navbar() {
                   <p className="">
                     <strong>Role</strong>
                     <br />
-                    {usrData["Groups"] && usrData["Groups"][0]}
+                    {usrData["Group"] || usrData["userType"] || "Student"}
                   </p>
                 </div>
               </div>
