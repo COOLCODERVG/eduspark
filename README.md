@@ -55,6 +55,16 @@ eduspark/
 
 ---
 
+
+## Clone the Repository
+
+To get started, clone the EduSpark repository and navigate into it:
+
+```bash
+git clone https://github.com/COOLCODERVG/eduspark.git
+cd eduspark
+```
+
 ## 🔐 Environment Variables
 
 ### Frontend (`/frontend/`)
@@ -73,18 +83,6 @@ Create a `.env` file inside the `/frontend` directory with your Gemini API key:
 ```bash
 cd frontend
 echo "VITE_GEMINI_API_KEY=your_api_key_here" > .env
-
----
-
-## 🧑‍💻 Local Setup (Under 2 Minutes)
-- Create `.env` file inside the `/frontend` directory with your Gemini API key as `VITE_GEMINI_API_KEY`.
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/COOLCODERVG/eduspark.git
-cd eduspark
-```
 
 ---
 
