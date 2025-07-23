@@ -90,7 +90,7 @@ echo "VITE_GEMINI_API_KEY=your_api_key_here" > .env
 ### 2. Backend — Django
 
 ```bash
-cd eduspark     # or backend, whichever matches your repo
+cd eduspark    
 python -m venv env
 source env/bin/activate  # Windows: env\Scripts\activate
 pip install -r requirements.txt
